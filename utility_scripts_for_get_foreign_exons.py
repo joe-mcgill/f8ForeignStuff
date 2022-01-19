@@ -29,14 +29,14 @@ def nuc_to_protein(nuc_string):
 	return protein 
 
 
-f8_aa=open('../data/f8_coding.fa').readlines()[1]
+f8_aa=open('./f8_coding.fa').readlines()[1]
 f8_seq=nuc_to_protein(f8_aa)
 
-other_mutations=open('../data/VariantCalls_5-2-2019.csv').readlines()
+other_mutations=open('./VariantCalls_5-2-2019.csv').readlines()
 other_mutations=[i for i in other_mutations if i.split(',')[3]=='F8' and i.split(',')[4][2]!='*' and re.match('p\.([a-zA-Z]{3})([0-9]*)([a-zA-Z]*)',i.split(',')[5])]
 lst=['\t'.join(j) for j in sorted([i.split(',') for i in other_mutations],key=lambda x: x[0])]
 
-all_affinities=open('../data/affinities_15mers.csv').readlines()
+all_affinities=open('./affinities_15mers.csv').readlines()
 all_affinities=[i.strip()[1:-1].split('","') for i in all_affinities]
 
 def get_affinity(peptide,allele):
