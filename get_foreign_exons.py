@@ -3,11 +3,11 @@ from collections import Counter
 import re 
 
 
-infile=open('../data/MLOF_final_drb_dpb_dqb.csv')
+infile=open('./MLOF_final_drb_dpb_dqb.csv')
 header=infile.readline().strip()+',New_type,length_of_foreign,foreign_seq,foreign_perc_rank_1,foreign_perc_rank_2\n'
 lines=infile.readlines()
 lines=[i.strip().split(',') for i in lines]# if i.strip().split(',')[0]=='WH3YQM8ZP']
-f8_aa=open('f8_coding.fa').readlines()[1]
+f8_aa=open('./f8_coding.fa').readlines()[1]
 f8_seq=nuc_to_protein(f8_aa)
 
 #for l in lines[:10]:
@@ -90,7 +90,7 @@ outfile.close()
 '''
 
 ct=0
-outfile=open('../data/MLOF_final_drb_dpb_dqb_and_foreign.csv','w')
+outfile=open('./MLOF_final_drb_dpb_dqb_and_foreign.csv','w')
 outfile.write(header)
 for i in new_lines:
 	print('%d of %d'%(ct,len(new_lines)))
